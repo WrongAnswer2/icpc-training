@@ -1,0 +1,24 @@
+site_name: Competitive Programming training
+site_url: https://WrongAnswer2.github.io/cp/  # Update this if deploying to GitHub Pages
+theme:
+  name: material  # Change to 'mkdocs' if not using Material theme
+  logo: assets/favicon.png
+  favicon: assets/favicon.png
+  palette:
+    primary: blue
+nav:
+  - Home: index.md
+  - ICPC-Training:
+      - 01/11/2024: icpc_training\01112024\training.md
+  - CodeForce-Training:
+      - 01/11/2024: codeforce_training\01112024\training.md
+      - 02/11/2024: codeforce_training\02112024\training.md
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+extra_javascript:
+  - javascripts/mathjax_config.js  # Path to your MathJax configuration script
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
