@@ -18,6 +18,8 @@ Eric, Jun, Kenny
 ### ICPC Training
 
 - [01112024](icpc_training/01112024/training.md)
+- [12102024](icpc_training/12102024/training.md)
+- [05102024](icpc_training/05102024/training.md)
 
 ### CodeForce Training
 
