@@ -7,7 +7,10 @@ Eric, Jun, Kenny
 ### Contests
 
 - [Ieeextreme 18.0](https://csacademy.com/ieeextreme18/)   
-  - Rank 475 / 8785 (Score: 1070.39) Top 5.4%
+
+    - Rank 475 / 8785 (Score: 1070.39) Top 5.4%
+
+- Ieeextreme 17.0 
 
 ### Upcoming Contests
 
