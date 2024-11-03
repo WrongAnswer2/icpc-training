@@ -14,3 +14,9 @@ what it does:
 - deploy on github page
 
 or use `mkdocs serve` to local serve the website.
+
+To do:
+
+add automation for adding training record
+- e.g., python autoadd.py `<category>` `<date>` can adjust mkdocs.yml, index.md and docs automatically
+

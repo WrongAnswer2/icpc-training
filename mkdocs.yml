@@ -10,6 +10,8 @@ nav:
   - Home: index.md
   - ICPC-Training:
       - 01/11/2024: icpc_training\01112024\training.md
+      - 12/10/2024: icpc_training\12102024\training.md
+      - 05/10/2024: icpc_training\05102024\training.md
   - CodeForce-Training:
       - 01/11/2024: codeforce_training\01112024\training.md
       - 02/11/2024: codeforce_training\02112024\training.md
