@@ -1,8 +1,8 @@
 # Requirements:
 ```
 mkdocs
-
 mkdocs-material
+pyyaml
 ```
 
 # update website

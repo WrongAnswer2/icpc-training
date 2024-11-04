@@ -1,26 +1,26 @@
 site_name: Competitive Programming training
-site_url: https://WrongAnswer2.github.io/cp/  # Update this if deploying to GitHub Pages
+site_url: https://WrongAnswer2.github.io/cp/
 theme:
-  name: material  # Change to 'mkdocs' if not using Material theme
+  name: material
   logo: assets/favicon.png
   favicon: assets/favicon.png
   palette:
     primary: brown
 nav:
-  - Home: index.md
-  - ICPC-Training:
-      - 01/11/2024: icpc_training\01112024\training.md
-      - 12/10/2024: icpc_training\12102024\training.md
-      - 05/10/2024: icpc_training\05102024\training.md
-  - CodeForce-Training:
-      - 01/11/2024: codeforce_training\01112024\training.md
-      - 02/11/2024: codeforce_training\02112024\training.md
+- Home: index.md
+- ICPC-Training:
+  - 01/11/2024: icpc_training/20241101/training.md
+  - 12/10/2024: icpc_training/20241012/training.md
+  - 05/10/2024: icpc_training/20241005/training.md
+- CodeForce-Training:
+  - 02/11/2024: codeforce_training/20241102/training.md
+  - 01/11/2024: codeforce_training/20241101/training.md
 markdown_extensions:
-  - toc:
-      permalink: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+- toc:
+    permalink: true
+- pymdownx.inlinehilite
+- pymdownx.snippets
+- pymdownx.superfences
 extra_javascript:
-  - javascripts/mathjax_config.js  # Path to your MathJax configuration script
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
+- javascripts/mathjax_config.js
+- https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
