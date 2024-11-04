@@ -1,0 +1,5 @@
+git add .
+git commit -m "Update Document"
+git push
+mkdocs build
+mkdocs gh-deploy
