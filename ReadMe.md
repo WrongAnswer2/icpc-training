@@ -1,22 +1,49 @@
-# Requirements:
+# Tutorial (~ 1 minute)
+
+## Setup(10 seconds) 
+1. clone repo
 ```
-mkdocs
-mkdocs-material
-pyyaml
+git clone https://github.com/WrongAnswer2/icpc-training.git
+
+```
+2. install pip
+```
+pip install mkdocs
+pip install mkdocs-material
+pip install pyyaml
+
+```
+3. local serve website
+```
+cd icpc-training
+mkdocs serve
+```
+## Adding records (10 seconds)
+1. add entry in records.xlsx
+2. run the following
+```
+python auto_record.py
+```
+## updating records (10 seconds)
+
+update the corresponding markdown files
+
+![image](https://github.com/user-attachments/assets/12a5f237-213b-44d6-a326-2980eacb8b4a)
+
+## removing records (10 seconds)
+
+run the following
+```
+python remove.record.py
 ```
 
-# update website
+## push + host github page
+copy the following and paste to the terminal directly
+```
+git add .
+git commit -m "Update Document"
+git push
+mkdocs build
+mkdocs gh-deploy
 
-Simply use autoupdate.sh 
-what it does:
-
-- push commits to github
-- deploy on github page
-
-or use `mkdocs serve` to local serve the website.
-
-To do:
-
-add automation for adding training record
-- e.g., python autoadd.py `<category>` `<date>` can adjust mkdocs.yml, index.md and docs automatically
-
+```
