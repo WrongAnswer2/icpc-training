@@ -22,14 +22,10 @@ const int N = 1000007;
 
 struct segtree {
     ll cnt[4*N] = {0}, sum[4*N] = {0};
-    
-    // Push up to parent node
     void pushup(int rt) {
         cnt[rt] = cnt[rt<<1] + cnt[rt<<1|1];
         sum[rt] = sum[rt<<1] + sum[rt<<1|1];
     }
-    
-    // Update the segment tree at position p with value num
     void upd(int rt, int l, int r, int p, ll num) {
         if (l == r) {
             cnt[rt] += num;
@@ -43,8 +39,6 @@ struct segtree {
             upd(rt<<1|1, mid+1, r, p, num);
         pushup(rt);
     }
-
-    // Query the k-th smallest sum
     ll ksum(int rt, int l, int r, ll k) {
         if (l == r) return l * k;
         int mid = (l + r) / 2;
@@ -56,10 +50,8 @@ struct segtree {
 } tr;
 
 int main(){
-    // Fast I/O
     ios::sync_with_stdio(false);
     cin.tie(0);
-    
     int n;
     ll m;
     n = rd();
@@ -75,8 +67,6 @@ int main(){
         totalL += w * l;
         m -= l;
     }
-    
-    // Sort in descending order based on w
     sort(all(s), [&](const tuple<ll, ll, ll> &a, const tuple<ll, ll, ll> &b) -> bool {
         return get<0>(a) > get<0>(b);
     });
@@ -84,7 +74,6 @@ int main(){
     ll ans = totalL + m * get<0>(s.front());
     
     for(auto &[w, l, r] : s){
-        // Removed the debug output to prevent TLE
         ll tmp = m + l;
         ll tmptot = totalL - w * l;
         if (tr.cnt[1] < tmp) {
