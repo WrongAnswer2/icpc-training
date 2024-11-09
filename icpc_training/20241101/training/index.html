@@ -862,11 +862,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="problem-b-explanation-chatgpt">Problem B Explanation (ChatGPT):<a class="headerlink" href="#problem-b-explanation-chatgpt" title="Permanent link">&para;</a></h2>
-<p>Certainly! Let's delve into the detailed step-by-step explanation of the provided C++ code. The code is designed to solve the problem of finding the maximum possible area of a <em>concave polygon</em> that can be formed from a given set of points, ensuring that the polygon has a strictly positive area. If such a polygon cannot be formed, the code outputs -1.</p>
-<p>Here's a structured breakdown of the algorithm and its implementation:</p>
 <hr />
 <h3 id="1-overview-of-the-problem"><em>1. Overview of the Problem</em><a class="headerlink" href="#1-overview-of-the-problem" title="Permanent link">&para;</a></h3>
-<p>Given ( n ) distinct points in a 2D plane (with no three points collinear), the task is to select a subset of these points (possibly all) and connect them to form a <em>concave polygon</em> with a positive area. The goal is to determine the <em>maximum possible area</em> of such a polygon. If forming a concave polygon is impossible, the output should be -1.</p>
+<p>Given $ n $ distinct points in a 2D plane (with no three points collinear), the task is to select a subset of these points (possibly all) and connect them to form a <em>concave polygon</em> with a positive area. The goal is to determine the <em>maximum possible area</em> of such a polygon. If forming a concave polygon is impossible, the output should be -1.</p>
 <hr />
 <h3 id="2-key-concepts-and-terminology"><em>2. Key Concepts and Terminology</em><a class="headerlink" href="#2-key-concepts-and-terminology" title="Permanent link">&para;</a></h3>
 <p>Before diving into the code, it's essential to understand some fundamental concepts:</p>
@@ -889,17 +887,7 @@
 </ul>
 <hr />
 <h3 id="3-detailed-breakdown-of-the-code"><em>3. Detailed Breakdown of the Code</em><a class="headerlink" href="#3-detailed-breakdown-of-the-code" title="Permanent link">&para;</a></h3>
-<h4 id="a-including-libraries-and-defining-basic-structures"><em>a. Including Libraries and Defining Basic Structures</em><a class="headerlink" href="#a-including-libraries-and-defining-basic-structures" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
-
-
-<span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bits</span><span class="o">/</span><span class="n">stdc</span><span class="o">++</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;*:</span><span class="w"> </span><span class="n">Includes</span><span class="w"> </span><span class="n">almost</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">C</span><span class="o">++</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">libraries</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">convenient</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">competitive</span><span class="w"> </span><span class="n">programming</span><span class="p">.</span>
-
-<span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span><span class="o">*:</span><span class="w"> </span><span class="n">Defines</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">alias</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">values</span><span class="p">.</span>
-</code></pre></div>
-<h4 id="b-defining-the-p-structure"><em>b. Defining the P Structure</em><a class="headerlink" href="#b-defining-the-p-structure" title="Permanent link">&para;</a></h4>
+<h4 id="a-defining-the-p-structure"><em>a. Defining the P Structure</em><a class="headerlink" href="#a-defining-the-p-structure" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// Structure to represent a point</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -918,16 +906,16 @@
 </code></pre></div>
 <ul>
 <li>
-<p><em>struct P</em>: Represents a point in 2D space with coordinates ( x ) and ( y ).</p>
+<p><em>struct P</em>: Represents a point in 2D space with coordinates $ x $ and $ y $.</p>
 </li>
 <li>
 <p><em>Constructors and Operators</em>:</p>
 </li>
-<li><em>P(ll x_=0, ll y_=0)</em>: Initializes a point with given ( x ) and ( y ) coordinates. Default values are ( 0 ).</li>
-<li><em>operator&lt;</em>: Allows points to be sorted first by ( x )-coordinate and then by ( y )-coordinate. This is crucial for algorithms like convex hull construction.</li>
+<li><em>P(ll x_=0, ll y_=0)</em>: Initializes a point with given $ x $ and $ y $ coordinates. Default values are $ 0 $.</li>
+<li><em>operator&lt;</em>: Allows points to be sorted first by $ x $-coordinate and then by $ y $-coordinate. This is crucial for algorithms like convex hull construction.</li>
 <li><em>operator-</em>: Defines the subtraction of two points, resulting in a vector. This is used in vector operations like cross products.</li>
 </ul>
-<h4 id="c-cross-product-function"><em>c. Cross Product Function</em><a class="headerlink" href="#c-cross-product-function" title="Permanent link">&para;</a></h4>
+<h4 id="b-cross-product-function"><em>b. Cross Product Function</em><a class="headerlink" href="#b-cross-product-function" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// Cross product of OA and OB vectors</span>
 <span class="n">ll</span><span class="w"> </span><span class="nf">cross</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">O</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">dx1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">O</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
@@ -939,18 +927,18 @@
 </code></pre></div>
 <ul>
 <li>
-<p><em>Purpose: Computes the cross product of vectors </em><em>OA</em> and <em>OB</em>, where ( O ), ( A ), and ( B ) are points.</p>
+<p><em>Purpose: Computes the cross product of vectors </em><em>OA</em> and <em>OB</em>, where $ O $, $ A $, and $ B $ are points.</p>
 </li>
 <li>
 <p><em>Formula</em>:
-  [
+  $$
   \text{Cross Product} = (A_x - O_x) \times (B_y - O_y) - (A_y - O_y) \times (B_x - O_x)
-  ]</p>
+  $$</p>
 </li>
 <li>
 <p><em>Interpretation</em>:</p>
 </li>
-<li>If the result is <em>positive, the sequence ( O \rightarrow A \rightarrow B ) makes a </em><em>left turn</em> (counter-clockwise).</li>
+<li>If the result is <em>positive, the sequence $ O \rightarrow A \rightarrow B $ makes a </em><em>left turn</em> (counter-clockwise).</li>
 <li>If it's <em>negative, it's a </em><em>right turn</em> (clockwise).</li>
 <li>
 <p>If the result is <em>zero, the points are </em><em>collinear</em>.</p>
@@ -959,7 +947,7 @@
 <p><em>Application</em>: Used in constructing the convex hull and determining the orientation of three points.</p>
 </li>
 </ul>
-<h4 id="d-convex-hull-function"><em>d. Convex Hull Function</em><a class="headerlink" href="#d-convex-hull-function" title="Permanent link">&para;</a></h4>
+<h4 id="c-convex-hull-function"><em>c. Convex Hull Function</em><a class="headerlink" href="#c-convex-hull-function" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// Function to compute the convex hull using Andrew&#39;s algorithm</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
@@ -989,7 +977,7 @@
 </code></pre></div>
 <ul>
 <li>
-<p><em>Purpose: Computes the </em><em>convex hull</em> of a given set of points using <em>Andrew's Monotone Chain Algorithm</em>, which is an efficient ( O(n \log n) ) method.</p>
+<p><em>Purpose: Computes the </em><em>convex hull</em> of a given set of points using <em>Andrew's Monotone Chain Algorithm</em>, which is an efficient $ O(n \log n) $ method.</p>
 </li>
 <li>
 <p><em>Steps</em>:</p>
@@ -997,7 +985,7 @@
 <li>
 <p><em>Sorting</em>:</p>
 <ul>
-<li>The points are first sorted based on their ( x )-coordinates. If two points have the same ( x )-coordinate, they're sorted by their ( y )-coordinates.</li>
+<li>The points are first sorted based on their $ x $-coordinates. If two points have the same $ x $-coordinate, they're sorted by their $ y $-coordinates.</li>
 </ul>
 </li>
 <li>
@@ -1024,7 +1012,7 @@
 <p><em>Output: A vector of points representing the convex hull in </em><em>counter-clockwise</em> order.</p>
 </li>
 </ul>
-<h4 id="e-polygon-area-calculation-function"><em>e. Polygon Area Calculation Function</em><a class="headerlink" href="#e-polygon-area-calculation-function" title="Permanent link">&para;</a></h4>
+<h4 id="d-polygon-area-calculation-function"><em>d. Polygon Area Calculation Function</em><a class="headerlink" href="#d-polygon-area-calculation-function" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// Function to compute twice the area of a polygon</span>
 <span class="n">ll</span><span class="w"> </span><span class="nf">polygon_area_twice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">poly</span><span class="p">){</span>
 <span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -1042,23 +1030,23 @@
 </li>
 <li>
 <p><em>Shoelace Formula</em>:
-  [
+  $$
   \text{Area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i \times y_{i+1} - x_{i+1} \times y_i) \right|
-  ]
+  $$
   Since the problem requires <em>twice the area</em>, the function directly computes the sum without dividing by 2.</p>
 </li>
 <li>
 <p><em>Loop Explanation</em>:</p>
 </li>
-<li>Iterates through each vertex ( i ) and its subsequent vertex ( j = (i+1) \% n ), ensuring a wrap-around for the last vertex back to the first.</li>
+<li>Iterates through each vertex $ i $ and its subsequent vertex $ j = (i+1) \% n $, ensuring a wrap-around for the last vertex back to the first.</li>
 <li>
-<p>Aggregates the cross products ( (x_i \times y_j - x_j \times y_i) ) to compute the signed area.</p>
+<p>Aggregates the cross products $ (x_i \times y_j - x_j \times y_i) $ to compute the signed area.</p>
 </li>
 <li>
 <p><em>Output</em>: The absolute value of the accumulated sum, representing twice the positive area of the polygon.</p>
 </li>
 </ul>
-<h4 id="f-processing-each-test-case-work-function"><em>f. Processing Each Test Case (work Function)</em><a class="headerlink" href="#f-processing-each-test-case-work-function" title="Permanent link">&para;</a></h4>
+<h4 id="e-processing-each-test-case-work-function"><em>e. Processing Each Test Case (work Function)</em><a class="headerlink" href="#e-processing-each-test-case-work-function" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">(){</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
@@ -1173,7 +1161,7 @@
 <ul>
 <li><em>Read Input</em>:</li>
 <li><em>n</em>: Number of points.</li>
-<li><em>points</em>: A vector of ( n ) points, each with ( x ) and ( y ) coordinates.</li>
+<li><em>points</em>: A vector of $ n $ points, each with $ x $ and $ y $ coordinates.</li>
 </ul>
 <h5 id="ii-computing-the-initial-convex-hull-ch1"><em>ii. Computing the Initial Convex Hull (CH1)</em><a class="headerlink" href="#ii-computing-the-initial-convex-hull-ch1" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="c1">// Compute Convex Hull CH1</span>
@@ -1251,7 +1239,7 @@
 <li><em>ptr1</em>: Iterates through sorted_CH1.</li>
 <li><em>ptr2</em>: Iterates through sorted points.</li>
 <li><em>Comparison Logic</em>:</li>
-<li><em>If</em> the current point in points is <em>not</em> on CH1 (i.e., its ( x )-coordinate is less or, if equal, its ( y )-coordinate is less than the current CH1 point), it's an <em>interior point</em> and is added to the interior vector.</li>
+<li><em>If</em> the current point in points is <em>not</em> on CH1 (i.e., its $ x $-coordinate is less or, if equal, its $ y $-coordinate is less than the current CH1 point), it's an <em>interior point</em> and is added to the interior vector.</li>
 <li><em>If</em> the current point in points <em>matches</em> the current CH1 point (x and y both), it's part of CH1, so both pointers are incremented without adding to interior.</li>
 <li><em>Else</em>, the CH1 pointer (ptr1) is advanced.</li>
 </ul>
@@ -1373,15 +1361,15 @@
 <li>
 <p><em>Iterating Over Each Edge of CH1</em>:</p>
 <ul>
-<li>For each edge ( ab ) in CH1 (from point a to point b):</li>
-<li><em>P ab = b - a;</em>: Computes the vector representation of edge ( ab ).</li>
+<li>For each edge $ ab $ in CH1 (from point a to point b):</li>
+<li><em>P ab = b - a;</em>: Computes the vector representation of edge $ ab $.</li>
 </ul>
 </li>
 <li>
-<p><em>Finding the Point in CH2 Minimizing the Cross Product with Edge ( ab )</em>:</p>
+<p><em>Finding the Point in CH2 Minimizing the Cross Product with Edge $ ab $</em>:</p>
 <ul>
-<li>The goal is to find a point ( x ) in CH2 such that the absolute value of the cross product ( |ab \times (x - a)| ) is <em>minimized</em>.</li>
-<li>A smaller cross product implies a smaller area reduction when introducing a concave vertex at ( x ), thereby maximizing the remaining area.</li>
+<li>The goal is to find a point $ x $ in CH2 such that the absolute value of the cross product $ |ab \times (x - a)| $ is <em>minimized</em>.</li>
+<li>A smaller cross product implies a smaller area reduction when introducing a concave vertex at $ x $, thereby maximizing the remaining area.</li>
 </ul>
 </li>
 <li>
@@ -1402,7 +1390,7 @@
 <li>
 <p><em>Updating the Minimum Decrease</em>:</p>
 <ul>
-<li>After finding the optimal point ( x ) in CH2 for the current edge ( ab ), compute the cross product ( |ab \times (x - a)| ).</li>
+<li>After finding the optimal point $ x $ in CH2 for the current edge $ ab $, compute the cross product $ |ab \times (x - a)| $.</li>
 <li>If this value is <em>smaller</em> than the current min_decrease, update min_decrease.</li>
 <li><em>Early Termination</em>:</li>
 <li>If min_decrease reaches 1 (the smallest possible positive integer, given that all points are distinct and no three are collinear), break out of the loop early as no smaller value is possible.</li>
@@ -1436,27 +1424,8 @@
 <li>If the result is <em>positive</em>, it signifies that a valid concave polygon exists, and its twice area is printed.</li>
 <li>If result is <em>not positive</em>, it's impossible to form a concave polygon with positive area under the given constraints, so -1 is printed.</li>
 </ul>
-<h4 id="g-the-main-function"><em>g. The main Function</em><a class="headerlink" href="#g-the-main-function" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
-<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
-<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="n">work</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>
-<p><em>Purpose</em>: Handles multiple test cases.</p>
-</li>
-<li>
-<p><em>Steps</em>:</p>
-</li>
-<li><em>Read Number of Test Cases (t)</em>: Determines how many times to execute the work function.</li>
-<li><em>Loop Over Test Cases</em>: For each test case, invoke the work function to process the input and compute the desired output.</li>
-</ul>
 <hr />
-<h3 id="4-comprehensive-example-walkthrough"><em>4. Comprehensive Example Walkthrough</em><a class="headerlink" href="#4-comprehensive-example-walkthrough" title="Permanent link">&para;</a></h3>
-<p>To solidify the understanding, let's walk through an illustrative example.</p>
+<h3 id="4-example"><em>4.  Example</em><a class="headerlink" href="#4-example" title="Permanent link">&para;</a></h3>
 <h4 id="example-input"><em>Example Input</em><a class="headerlink" href="#example-input" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>1
 5
@@ -1470,20 +1439,20 @@
 <li><em>Interpretation</em>:</li>
 <li><em>1 Test Case</em>:<ul>
 <li><em>5 Points</em>:</li>
-<li>( (0, 0) )</li>
-<li>( (2, 0) )</li>
-<li>( (1, 1) )</li>
-<li>( (2, 2) )</li>
-<li>( (0, 2) )</li>
+<li>$ (0, 0) $</li>
+<li>$ (2, 0) $</li>
+<li>$ (1, 1) $</li>
+<li>$ (2, 2) $</li>
+<li>$ (0, 2) $</li>
 </ul>
 </li>
 </ul>
 <h4 id="step-by-step-execution"><em>Step-by-Step Execution</em><a class="headerlink" href="#step-by-step-execution" title="Permanent link">&para;</a></h4>
 <ol>
 <li><em>Compute Convex Hull (CH1)</em>:</li>
-<li>For the given points, the convex hull would include all points except ( (1, 1) ), as it's an interior point.</li>
+<li>For the given points, the convex hull would include all points except $ (1, 1) $, as it's an interior point.</li>
 <li>
-<p><em>CH1</em>: ( [(0, 0), (2, 0), (2, 2), (0, 2)] )</p>
+<p><em>CH1</em>: $ [(0, 0), (2, 0), (2, 2), (0, 2)] $</p>
 </li>
 <li>
 <p><em>Check Convexity</em>:</p>
@@ -1495,67 +1464,67 @@
 <p><em>Identify Interior Points</em>:</p>
 </li>
 <li>
-<p><em>Interior Points</em>: ( [(1, 1)] )</p>
+<p><em>Interior Points</em>: $ [(1, 1)] $</p>
 </li>
 <li>
 <p><em>Compute Convex Hull of Interior Points (CH2)</em>:</p>
 </li>
 <li>Since there's only one interior point, the convex hull is the point itself.</li>
 <li>
-<p><em>CH2</em>: ( [(1, 1)] )</p>
+<p><em>CH2</em>: $ [(1, 1)] $</p>
 </li>
 <li>
 <p><em>Calculate Twice the Area of CH1</em>:</p>
 </li>
 <li><em>Formula</em>:
-     [
+     $$
      \text{Area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i \times y_{i+1} - x_{i+1} \times y_i) \right|
-     ]</li>
+     $$</li>
 <li>
 <p><em>Calculation</em>:</p>
 <ul>
-<li>( (0 \times 0 - 2 \times 0) = 0 )</li>
-<li>( (2 \times 2 - 2 \times 0) = 4 )</li>
-<li>( (2 \times 2 - 0 \times 2) = 4 )</li>
-<li>( (0 \times 0 - 0 \times 2) = 0 )</li>
-<li><em>Sum</em>: ( 0 + 4 + 4 + 0 = 8 )</li>
-<li><em>Twice the Area</em>: ( |8| = 8 )</li>
+<li>$ (0 \times 0 - 2 \times 0) = 0 $</li>
+<li>$ (2 \times 2 - 2 \times 0) = 4 $</li>
+<li>$ (2 \times 2 - 0 \times 2) = 4 $</li>
+<li>$ (0 \times 0 - 0 \times 2) = 0 $</li>
+<li><em>Sum</em>: $ 0 + 4 + 4 + 0 = 8 $</li>
+<li><em>Twice the Area</em>: $ |8| = 8 $</li>
 </ul>
 </li>
 <li>
 <p><em>Initialize min_decrease</em>:</p>
 </li>
 <li>
-<p><em>min_decrease</em>: Initially set to ( LLONG_MAX )</p>
+<p><em>min_decrease</em>: Initially set to $ LLONG_MAX $</p>
 </li>
 <li>
 <p><em>Applying Rotating Calipers</em>:</p>
 </li>
 <li>
 <p><em>Iterate Over Each Edge of CH1</em>:</p>
-<p><em>First Edge</em>: ( (0, 0) \rightarrow (2, 0) )
- - <em>Vector ( ab )</em>: ( (2-0, 0-0) = (2, 0) )
- - <em>Special Point from CH2</em>: ( (1,1) - (0,0) = (1,1) )
- - <em>Cross Product</em>: ( |2 \times 1 - 0 \times 1| = |2| = 2 )
- - <em>Update min_decrease</em>: ( \min(\text{LLONG_MAX}, 2) = 2 )</p>
-<p><em>Second Edge</em>: ( (2, 0) \rightarrow (2, 2) )
- - <em>Vector ( ab )</em>: ( (2-2, 2-0) = (0, 2) )
- - <em>Special Point from CH2</em>: ( (1,1) - (2,0) = (-1,1) )
- - <em>Cross Product</em>: ( |0 \times 1 - 2 \times (-1)| = |2| = 2 )
- - <em>Update min_decrease</em>: ( \min(2, 2) = 2 )</p>
-<p><em>Third Edge</em>: ( (2, 2) \rightarrow (0, 2) )
- - <em>Vector ( ab )</em>: ( (0-2, 2-2) = (-2, 0) )
- - <em>Special Point from CH2</em>: ( (1,1) - (2,2) = (-1,-1) )
- - <em>Cross Product</em>: ( |-2 \times (-1) - 0 \times (-1)| = |2| = 2 )
- - <em>Update min_decrease</em>: ( \min(2, 2) = 2 )</p>
-<p><em>Fourth Edge</em>: ( (0, 2) \rightarrow (0, 0) )
- - <em>Vector ( ab )</em>: ( (0-0, 0-2) = (0, -2) )
- - <em>Special Point from CH2</em>: ( (1,1) - (0,2) = (1,-1) )
- - <em>Cross Product</em>: ( |0 \times (-1) - (-2) \times 1| = |2| = 2 )
- - <em>Update min_decrease</em>: ( \min(2, 2) = 2 )</p>
+<p><em>First Edge</em>: $ (0, 0) \rightarrow (2, 0) $
+ - <em>Vector $ ab $</em>: $ (2-0, 0-0) = (2, 0) $
+ - <em>Special Point from CH2</em>: $ (1,1) - (0,0) = (1,1) $
+ - <em>Cross Product</em>: $ |2 \times 1 - 0 \times 1| = |2| = 2 $
+ - <em>Update min_decrease</em>: $ \min(\text{LLONG_MAX}, 2) = 2 $</p>
+<p><em>Second Edge</em>: $ (2, 0) \rightarrow (2, 2) $
+ - <em>Vector $ ab $</em>: $ (2-2, 2-0) = (0, 2) $
+ - <em>Special Point from CH2</em>: $ (1,1) - (2,0) = (-1,1) $
+ - <em>Cross Product</em>: $ |0 \times 1 - 2 \times (-1)| = |2| = 2 $
+ - <em>Update min_decrease</em>: $ \min(2, 2) = 2 $</p>
+<p><em>Third Edge</em>: $ (2, 2) \rightarrow (0, 2) $
+ - <em>Vector $ ab $</em>: $ (0-2, 2-2) = (-2, 0) $
+ - <em>Special Point from CH2</em>: $ (1,1) - (2,2) = (-1,-1) $
+ - <em>Cross Product</em>: $ |-2 \times (-1) - 0 \times (-1)| = |2| = 2 $
+ - <em>Update min_decrease</em>: $ \min(2, 2) = 2 $</p>
+<p><em>Fourth Edge</em>: $ (0, 2) \rightarrow (0, 0) $
+ - <em>Vector $ ab $</em>: $ (0-0, 0-2) = (0, -2) $
+ - <em>Special Point from CH2</em>: $ (1,1) - (0,2) = (1,-1) $
+ - <em>Cross Product</em>: $ |0 \times (-1) - (-2) \times 1| = |2| = 2 $
+ - <em>Update min_decrease</em>: $ \min(2, 2) = 2 $</p>
 </li>
 <li>
-<p><em>Final min_decrease</em>: ( 2 )</p>
+<p><em>Final min_decrease</em>: $ 2 $</p>
 </li>
 <li>
 <p><em>Compute the Result</em>:</p>
@@ -1567,7 +1536,7 @@
      ]</p>
 </li>
 <li><em>Check</em>:<ul>
-<li>Since ( 6 &gt; 0 ), a valid concave polygon exists.</li>
+<li>Since $ 6 &gt; 0 $, a valid concave polygon exists.</li>
 </ul>
 </li>
 <li><em>Output</em>: 6</li>
@@ -1633,13 +1602,13 @@
 <ol>
 <li><em>Efficient Convex Hull Construction</em>:</li>
 <li>
-<p><em>Andrew's Monotone Chain Algorithm</em> is used, which runs in ( O(n \log n) ) time and is suitable for large datasets.</p>
+<p><em>Andrew's Monotone Chain Algorithm</em> is used, which runs in $ O(n \log n) $ time and is suitable for large datasets.</p>
 </li>
 <li>
 <p><em>Two-Pointer Technique for Identifying Interior Points</em>:</p>
 </li>
 <li>
-<p>By sorting both CH1 and points, the two-pointer approach reduces the time complexity of identifying interior points from ( O(n \log n) ) (using binary search) to ( O(n) ), which is crucial when ( n ) is large.</p>
+<p>By sorting both CH1 and points, the two-pointer approach reduces the time complexity of identifying interior points from $ O(n \log n) $ (using binary search) to $ O(n) $, which is crucial when $ n $ is large.</p>
 </li>
 <li>
 <p><em>Rotating Calipers for Minimal Decrease Calculation</em>:</p>
@@ -1665,31 +1634,6 @@
 <li>By pre-sorting and efficiently managing pointers, the code avoids recalculating or re-evaluating points and edges, ensuring optimal runtime performance.</li>
 </ol>
 <hr />
-<h3 id="7-final-notes-and-best-practices"><em>7. Final Notes and Best Practices</em><a class="headerlink" href="#7-final-notes-and-best-practices" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><em>Data Types</em>: The use of long long (ll) ensures that very large coordinate values and cross products do not cause integer overflow.</p>
-</li>
-<li>
-<p><em>Edge Case Handling</em>: The algorithm meticulously handles scenarios where:</p>
-</li>
-<li>All points lie on the convex hull.</li>
-<li>There are no interior points.</li>
-<li>
-<p>Reducing the area might lead to invalid (zero or negative) results.</p>
-</li>
-<li>
-<p><em>Modular Code Design</em>: Functions like convex_hull and polygon_area_twice encapsulate specific functionalities, promoting code readability and reusability.</p>
-</li>
-<li>
-<p><em>Algorithm Choice</em>: Selecting the right algorithms (like Andrew's for convex hull and Rotating Calipers for minimal decrease) is pivotal for achieving the desired time complexity.</p>
-</li>
-<li>
-<p><em>Performance Considerations</em>: Given the problem's constraints (up to ( 10^5 ) points per test case and ( 2 \times 10^5 ) across all test cases), ensuring ( O(n \log n) ) or better time complexities is essential to prevent Time Limit Exceeded (TLE) errors.</p>
-</li>
-</ul>
-<hr />
-<p>By following this detailed explanation, you should now have a comprehensive understanding of the algorithm and logic underpinning the provided C++ code. This understanding not only aids in grasping how the problem is solved but also equips you with insights into efficient computational geometry techniques essential for similar problems.</p>
 
 
 
