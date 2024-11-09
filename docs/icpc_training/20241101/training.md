@@ -465,7 +465,7 @@ Before diving into the code, it's essential to understand some fundamental conce
 
 #### *a. Including Libraries and Defining Basic Structures*
 
-cpp
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -474,10 +474,10 @@ typedef long long ll;
 - *#include <bits/stdc++.h>*: Includes almost all C++ standard libraries, which is convenient for competitive programming.
 
 - *typedef long long ll;*: Defines ll as an alias for long long to handle large integer values.
-
+```
 #### *b. Defining the P Structure*
 
-cpp
+```cpp
 // Structure to represent a point
 struct P {
     ll x, y;
@@ -493,7 +493,7 @@ struct P {
         return P(x - other.x, y - other.y);
     }
 };
-
+```
 
 - *struct P*: Represents a point in 2D space with coordinates \( x \) and \( y \).
 
@@ -504,7 +504,7 @@ struct P {
 
 #### *c. Cross Product Function*
 
-cpp
+```cpp
 // Cross product of OA and OB vectors
 ll cross(const P& O, const P& A, const P& B) {
     ll dx1 = A.x - O.x;
@@ -513,7 +513,7 @@ ll cross(const P& O, const P& A, const P& B) {
     ll dy2 = B.y - O.y;
     return dx1 * dy2 - dx2 * dy1;
 }
-
+```
 
 - *Purpose: Computes the cross product of vectors **OA* and *OB*, where \( O \), \( A \), and \( B \) are points.
 
@@ -531,7 +531,7 @@ ll cross(const P& O, const P& A, const P& B) {
 
 #### *d. Convex Hull Function*
 
-cpp
+```cpp
 // Function to compute the convex hull using Andrew's algorithm
 vector<P> convex_hull(vector<P> pts) {
     int n = pts.size();
@@ -558,7 +558,7 @@ vector<P> convex_hull(vector<P> pts) {
     if(hull.size() >1) hull.pop_back();
     return hull;
 }
-
+```
 
 - *Purpose: Computes the **convex hull* of a given set of points using *Andrew's Monotone Chain Algorithm*, which is an efficient \( O(n \log n) \) method.
 
@@ -582,7 +582,7 @@ vector<P> convex_hull(vector<P> pts) {
 
 #### *e. Polygon Area Calculation Function*
 
-cpp
+```cpp
 // Function to compute twice the area of a polygon
 ll polygon_area_twice(const vector<P>& poly){
     ll area = 0;
@@ -593,7 +593,7 @@ ll polygon_area_twice(const vector<P>& poly){
     }
     return abs(area);
 }
-
+```
 
 - *Purpose: Calculates **twice the area* of a polygon given its vertices using the *Shoelace Formula*.
 
@@ -611,7 +611,7 @@ ll polygon_area_twice(const vector<P>& poly){
 
 #### *f. Processing Each Test Case (work Function)*
 
-cpp
+```cpp
 inline void work(){
     int n;
     scanf("%d", &n);
@@ -715,18 +715,18 @@ inline void work(){
         printf("-1\n");
     }
 }
-
+```
 
 Let's break down each part of the work function:
 
 ##### *i. Input Handling*
 
-cpp
+```cpp
 int n;
 scanf("%d", &n);
 vector<P> points(n);
 for(int i=0;i<n;i++) scanf("%lld %lld", &points[i].x, &points[i].y);
-
+```
 
 - *Read Input*:
   - *n*: Number of points.
@@ -734,7 +734,7 @@ for(int i=0;i<n;i++) scanf("%lld %lld", &points[i].x, &points[i].y);
 
 ##### *ii. Computing the Initial Convex Hull (CH1)*
 
-cpp
+```cpp
 // Compute Convex Hull CH1
 vector<P> CH1 = convex_hull(points);
 if((int)CH1.size() == n){
@@ -742,7 +742,7 @@ if((int)CH1.size() == n){
     printf("-1\n");
     return;
 }
-
+```
 
 - *Compute Convex Hull (CH1)*:
   - Uses the previously defined convex_hull function.
@@ -755,7 +755,7 @@ if((int)CH1.size() == n){
 
 ##### *iii. Identifying Interior Points*
 
-cpp
+```cpp
 // Sort CH1 and points to collect interior points using two pointers
 vector<P> sorted_CH1 = CH1;
 sort(sorted_CH1.begin(), sorted_CH1.end());
@@ -787,7 +787,7 @@ if(interior.empty()){
     printf("-1\n");
     return;
 }
-
+```
 
 - *Objective: Extract points **not* on the convex hull (CH1). These are the *interior points* and are crucial for forming a concave polygon.
 
@@ -814,10 +814,10 @@ if(interior.empty()){
 
 ##### *iv. Computing the Convex Hull of Interior Points (CH2)*
 
-cpp
+```cpp
 // Compute Convex Hull of interior points (CH2)
 vector<P> CH2 = convex_hull(interior);
-
+```
 
 - *Purpose: To construct the convex hull of the **interior points*. This helps in effectively determining how to form a concave polygon by "cutting" into the initial convex hull (CH1).
 
@@ -827,10 +827,10 @@ vector<P> CH2 = convex_hull(interior);
 
 ##### *v. Calculating the Area of the Initial Convex Hull*
 
-cpp
+```cpp
 // Compute twice the area of CH1
 ll CH1_area_twice = polygon_area_twice(CH1);
-
+```
 
 - *Purpose*: Calculates twice the area of the initial convex hull (CH1) using the polygon_area_twice function.
 
@@ -839,10 +839,10 @@ ll CH1_area_twice = polygon_area_twice(CH1);
 
 ##### *vi. Initializing the Minimum Decrease in Area*
 
-cpp
+```cpp
 // Initialize minimum decrease in area
 ll min_decrease = LLONG_MAX;
-
+```
 
 - *Purpose: Sets a variable min_decrease to the maximum possible value, which will later be updated to store the **minimum possible decrease* in area when transforming the convex hull into a concave polygon.
 
@@ -852,7 +852,7 @@ ll min_decrease = LLONG_MAX;
 
 ##### *vii. Rotating Calipers Technique to Find Minimal Decrease*
 
-cpp
+```cpp
 // Rotating Calipers to find the minimum decrease
 int m1 = CH1.size();
 int m2 = CH2.size();
@@ -890,7 +890,7 @@ for(int i =0; i<m1; ++i){
         if(min_decrease ==1) break;
     }
 }
-
+```
 
 - *Purpose: Determines the **minimum decrease* in area required to turn the convex hull CH1 into a concave polygon by leveraging the *Rotating Calipers* technique.
 
@@ -930,7 +930,7 @@ for(int i =0; i<m1; ++i){
 
 ##### *viii. Final Computation and Output*
 
-cpp
+```cpp
 // Now, the maximum area of concave polygon is CH1_area_twice - min_decrease
 ll result = CH1_area_twice - min_decrease;
 // Ensure the result is positive
@@ -940,7 +940,7 @@ if(result >0){
 else{
     printf("-1\n");
 }
-
+```
 
 - *Calculating the Result*:
   - *result = CH1_area_twice - min_decrease;*
@@ -954,14 +954,14 @@ else{
 
 #### *g. The main Function*
 
-cpp
+```cpp
 int main(){
     int t;
     scanf("%d", &t);
     while(t--) work();
     return 0;
 }
-
+```
 
 - *Purpose*: Handles multiple test cases.
 
@@ -977,7 +977,7 @@ To solidify the understanding, let's walk through an illustrative example.
 
 #### *Example Input*
 
-
+```
 1
 5
 0 0
@@ -985,7 +985,7 @@ To solidify the understanding, let's walk through an illustrative example.
 1 1
 2 2
 0 2
-
+```
 
 - *Interpretation*:
   - *1 Test Case*:
