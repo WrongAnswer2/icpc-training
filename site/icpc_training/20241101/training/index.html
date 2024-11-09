@@ -890,35 +890,32 @@
 <hr />
 <h3 id="3-detailed-breakdown-of-the-code"><em>3. Detailed Breakdown of the Code</em><a class="headerlink" href="#3-detailed-breakdown-of-the-code" title="Permanent link">&para;</a></h3>
 <h4 id="a-including-libraries-and-defining-basic-structures"><em>a. Including Libraries and Defining Basic Structures</em><a class="headerlink" href="#a-including-libraries-and-defining-basic-structures" title="Permanent link">&para;</a></h4>
-<p>cpp</p>
-<h1 id="include">include <bits/stdc++.h><a class="headerlink" href="#include" title="Permanent link">&para;</a></h1>
-<p>using namespace std;
-typedef long long ll;</p>
-<ul>
-<li>
-<p><em>#include <bits/stdc++.h></em>: Includes almost all C++ standard libraries, which is convenient for competitive programming.</p>
-</li>
-<li>
-<p><em>typedef long long ll;</em>: Defines ll as an alias for long long to handle large integer values.</p>
-</li>
-</ul>
-<h4 id="b-defining-the-p-structure"><em>b. Defining the P Structure</em><a class="headerlink" href="#b-defining-the-p-structure" title="Permanent link">&para;</a></h4>
-<p>cpp
-// Structure to represent a point
-struct P {
-    ll x, y;
-    P(ll x_=0, ll y_=0) : x(x_), y(y_) {}</p>
-<pre><code>// Operator for sorting
-bool operator&lt;(const P&amp; other) const {
-    return x &lt; other.x || (x == other.x &amp;&amp; y &lt; other.y);
-}
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
 
-// Subtraction operator
-P operator - (const P&amp; other) const {
-    return P(x - other.x, y - other.y);
-}
-</code></pre>
-<p>};</p>
+
+<span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">bits</span><span class="o">/</span><span class="n">stdc</span><span class="o">++</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;*:</span><span class="w"> </span><span class="n">Includes</span><span class="w"> </span><span class="n">almost</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">C</span><span class="o">++</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">libraries</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">convenient</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">competitive</span><span class="w"> </span><span class="n">programming</span><span class="p">.</span>
+
+<span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span><span class="o">*:</span><span class="w"> </span><span class="n">Defines</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">alias</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="n">large</span><span class="w"> </span><span class="n">integer</span><span class="w"> </span><span class="n">values</span><span class="p">.</span>
+</code></pre></div>
+<h4 id="b-defining-the-p-structure"><em>b. Defining the P Structure</em><a class="headerlink" href="#b-defining-the-p-structure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Structure to represent a point</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">P</span><span class="p">(</span><span class="n">ll</span><span class="w"> </span><span class="n">x_</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="w"> </span><span class="n">y_</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x_</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="c1">// Operator for sorting</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Subtraction operator</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>struct P</em>: Represents a point in 2D space with coordinates ( x ) and ( y ).</p>
@@ -931,15 +928,15 @@ P operator - (const P&amp; other) const {
 <li><em>operator-</em>: Defines the subtraction of two points, resulting in a vector. This is used in vector operations like cross products.</li>
 </ul>
 <h4 id="c-cross-product-function"><em>c. Cross Product Function</em><a class="headerlink" href="#c-cross-product-function" title="Permanent link">&para;</a></h4>
-<p>cpp
-// Cross product of OA and OB vectors
-ll cross(const P&amp; O, const P&amp; A, const P&amp; B) {
-    ll dx1 = A.x - O.x;
-    ll dy1 = A.y - O.y;
-    ll dx2 = B.x - O.x;
-    ll dy2 = B.y - O.y;
-    return dx1 * dy2 - dx2 * dy1;
-}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Cross product of OA and OB vectors</span>
+<span class="n">ll</span><span class="w"> </span><span class="nf">cross</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">O</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">dx1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">O</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">dy1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">O</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">dx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">O</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">dy2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">O</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dx1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dy2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">dx2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dy1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: Computes the cross product of vectors </em><em>OA</em> and <em>OB</em>, where ( O ), ( A ), and ( B ) are points.</p>
@@ -963,33 +960,33 @@ ll cross(const P&amp; O, const P&amp; A, const P&amp; B) {
 </li>
 </ul>
 <h4 id="d-convex-hull-function"><em>d. Convex Hull Function</em><a class="headerlink" href="#d-convex-hull-function" title="Permanent link">&para;</a></h4>
-<p>cpp
-// Function to compute the convex hull using Andrew's algorithm
-vector<P> convex_hull(vector<P> pts) {
-    int n = pts.size();
-    if(n == 0) return {};
-    sort(pts.begin(), pts.end());</p>
-<pre><code>vector&lt;P&gt; hull;
-// Lower hull
-for(int i = 0; i &lt; n; ++i){
-    while(hull.size() &gt;=2 &amp;&amp; cross(hull[hull.size()-2], hull[hull.size()-1], pts[i]) &lt;= 0){
-        hull.pop_back();
-    }
-    hull.emplace_back(pts[i]);
-}
-// Upper hull
-int lower_size = hull.size();
-for(int i = n-2; i &gt;=0 ; --i){
-    while(hull.size() &gt; lower_size &amp;&amp; cross(hull[hull.size()-2], hull[hull.size()-1], pts[i]) &lt;= 0){
-        hull.pop_back();
-    }
-    hull.emplace_back(pts[i]);
-}
-// Remove the last point because it's the same as the first one
-if(hull.size() &gt;1) hull.pop_back();
-return hull;
-</code></pre>
-<p>}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Function to compute the convex hull using Andrew&#39;s algorithm</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">sort</span><span class="p">(</span><span class="n">pts</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">pts</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hull</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Lower hull</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cross</span><span class="p">(</span><span class="n">hull</span><span class="p">[</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-2</span><span class="p">],</span><span class="w"> </span><span class="n">hull</span><span class="p">[</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">],</span><span class="w"> </span><span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">hull</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">hull</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Upper hull</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lower_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="mi">-2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">){</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lower_size</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cross</span><span class="p">(</span><span class="n">hull</span><span class="p">[</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-2</span><span class="p">],</span><span class="w"> </span><span class="n">hull</span><span class="p">[</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">],</span><span class="w"> </span><span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">hull</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">hull</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Remove the last point because it&#39;s the same as the first one</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">hull</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">hull</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: Computes the </em><em>convex hull</em> of a given set of points using <em>Andrew's Monotone Chain Algorithm</em>, which is an efficient ( O(n \log n) ) method.</p>
@@ -1028,17 +1025,17 @@ return hull;
 </li>
 </ul>
 <h4 id="e-polygon-area-calculation-function"><em>e. Polygon Area Calculation Function</em><a class="headerlink" href="#e-polygon-area-calculation-function" title="Permanent link">&para;</a></h4>
-<p>cpp
-// Function to compute twice the area of a polygon
-ll polygon_area_twice(const vector<P>&amp; poly){
-    ll area = 0;
-    int n = poly.size();
-    for(int i=0;i&lt;n;i++){
-        int j = (i+1)%n;
-        area += poly[i].x * poly[j].y - poly[j].x * poly[i].y;
-    }
-    return abs(area);
-}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Function to compute twice the area of a polygon</span>
+<span class="n">ll</span><span class="w"> </span><span class="nf">polygon_area_twice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">poly</span><span class="p">){</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poly</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">n</span><span class="p">;</span>
+<span class="w">        </span><span class="n">area</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">poly</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">poly</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">area</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: Calculates </em><em>twice the area</em> of a polygon given its vertices using the <em>Shoelace Formula</em>.</p>
@@ -1062,131 +1059,131 @@ ll polygon_area_twice(const vector<P>&amp; poly){
 </li>
 </ul>
 <h4 id="f-processing-each-test-case-work-function"><em>f. Processing Each Test Case (work Function)</em><a class="headerlink" href="#f-processing-each-test-case-work-function" title="Permanent link">&para;</a></h4>
-<p>cpp
-inline void work(){
-    int n;
-    scanf("%d", &amp;n);
-    vector<P> points(n);
-    for(int i=0;i&lt;n;i++) scanf("%lld %lld", &amp;points[i].x, &amp;points[i].y);</p>
-<pre><code>// Compute Convex Hull CH1
-vector&lt;P&gt; CH1 = convex_hull(points);
-if((int)CH1.size() == n){
-    // All points are on convex hull, cannot form concave polygon
-    printf("-1\n");
-    return;
-}
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%lld %lld&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">);</span>
 
-// Sort CH1 and points to collect interior points using two pointers
-vector&lt;P&gt; sorted_CH1 = CH1;
-sort(sorted_CH1.begin(), sorted_CH1.end());
-sort(points.begin(), points.end());
+<span class="w">    </span><span class="c1">// Compute Convex Hull CH1</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">points</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">CH1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">// All points are on convex hull, cannot form concave polygon</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-vector&lt;P&gt; interior;
-int ptr1 = 0, ptr2 = 0;
-int m = sorted_CH1.size();
-int total = points.size();
-while(ptr1 &lt; m &amp;&amp; ptr2 &lt; n){
-    if(points[ptr2].x &lt; sorted_CH1[ptr1].x || 
-       (points[ptr2].x == sorted_CH1[ptr1].x &amp;&amp; points[ptr2].y &lt; sorted_CH1[ptr1].y)){
-        interior.emplace_back(points[ptr2++]);
-    }
-    else if(points[ptr2].x == sorted_CH1[ptr1].x &amp;&amp; points[ptr2].y == sorted_CH1[ptr1].y){
-        ++ptr1; ++ptr2;
-    }
-    else{
-        ++ptr1;
-    }
-}
-// Add any remaining points
-while(ptr2 &lt; n){
-    interior.emplace_back(points[ptr2++]);
-}
+<span class="w">    </span><span class="c1">// Sort CH1 and points to collect interior points using two pointers</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sort</span><span class="p">(</span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">    </span><span class="n">sort</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">points</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
-if(interior.empty()){
-    // No interior points, cannot form concave polygon
-    printf("-1\n");
-    return;
-}
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">interior</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ptr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">ptr1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
+<span class="w">           </span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">y</span><span class="p">)){</span>
+<span class="w">            </span><span class="n">interior</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="o">++</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">y</span><span class="p">){</span>
+<span class="w">            </span><span class="o">++</span><span class="n">ptr1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">ptr2</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="o">++</span><span class="n">ptr1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Add any remaining points</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">ptr2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">        </span><span class="n">interior</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="o">++</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
 
-// Compute Convex Hull of interior points (CH2)
-vector&lt;P&gt; CH2 = convex_hull(interior);
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">interior</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+<span class="w">        </span><span class="c1">// No interior points, cannot form concave polygon</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-// Compute twice the area of CH1
-ll CH1_area_twice = polygon_area_twice(CH1);
+<span class="w">    </span><span class="c1">// Compute Convex Hull of interior points (CH2)</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CH2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">interior</span><span class="p">);</span>
 
-// Initialize minimum decrease in area
-ll min_decrease = LLONG_MAX;
+<span class="w">    </span><span class="c1">// Compute twice the area of CH1</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">CH1_area_twice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polygon_area_twice</span><span class="p">(</span><span class="n">CH1</span><span class="p">);</span>
 
-// Rotating Calipers to find the minimum decrease
-int m1 = CH1.size();
-int m2 = CH2.size();
-if(m2 ==0){
-    // No interior convex hull, cannot form concave polygon
-    printf("-1\n");
-    return;
-}
-int j = 0;
-for(int i =0; i&lt;m1; ++i){
-    P a = CH1[i];
-    P b = CH1[(i+1)%m1];
-    P ab = b - a;
+<span class="w">    </span><span class="c1">// Initialize minimum decrease in area</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">min_decrease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">;</span>
 
-    // Move pointer j to minimize |ab cross (CH2[j] - a)|
-    while(true){
-        int jp = (j +1) % m2;
-        P current = CH2[j] - a;
-        P next_p = CH2[jp] - a;
-        ll cross1 = abs(ab.x * current.y - ab.y * current.x);
-        ll cross2 = abs(ab.x * next_p.y - ab.y * next_p.x);
-        if(cross2 &lt; cross1){
-            j = jp;
-        }
-        else{
-            break;
-        }
-    }
-    // Update minimum decrease
-    P x = CH2[j] - a;
-    ll cross_val = abs(ab.x * x.y - ab.y * x.x);
-    if(cross_val &lt; min_decrease){
-        min_decrease = cross_val;
-        // Early exit if the minimal possible value is found
-        if(min_decrease ==1) break;
-    }
-}
+<span class="w">    </span><span class="c1">// Rotating Calipers to find the minimum decrease</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">m2</span><span class="w"> </span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">// No interior convex hull, cannot form concave polygon</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">m1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">m1</span><span class="p">];</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 
-// Now, the maximum area of concave polygon is CH1_area_twice - min_decrease
-ll result = CH1_area_twice - min_decrease;
-// Ensure the result is positive
-if(result &gt;0){
-    printf("%lld\n", result);
-}
-else{
-    printf("-1\n");
-}
-</code></pre>
-<p>}</p>
+<span class="w">        </span><span class="c1">// Move pointer j to minimize |ab cross (CH2[j] - a)|</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">jp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span>
+<span class="w">            </span><span class="n">P</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">            </span><span class="n">P</span><span class="w"> </span><span class="n">next_p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">jp</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ll</span><span class="w"> </span><span class="n">cross1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">            </span><span class="n">ll</span><span class="w"> </span><span class="n">cross2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">next_p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">next_p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">cross2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cross1</span><span class="p">){</span>
+<span class="w">                </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jp</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="p">{</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Update minimum decrease</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ll</span><span class="w"> </span><span class="n">cross_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cross_val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min_decrease</span><span class="p">){</span>
+<span class="w">            </span><span class="n">min_decrease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cross_val</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// Early exit if the minimal possible value is found</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">min_decrease</span><span class="w"> </span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Now, the maximum area of concave polygon is CH1_area_twice - min_decrease</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1_area_twice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">min_decrease</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Ensure the result is positive</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Let's break down each part of the work function:</p>
 <h5 id="i-input-handling"><em>i. Input Handling</em><a class="headerlink" href="#i-input-handling" title="Permanent link">&para;</a></h5>
-<p>cpp
-int n;
-scanf("%d", &amp;n);
-vector<P> points(n);
-for(int i=0;i&lt;n;i++) scanf("%lld %lld", &amp;points[i].x, &amp;points[i].y);</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%lld %lld&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li><em>Read Input</em>:</li>
 <li><em>n</em>: Number of points.</li>
 <li><em>points</em>: A vector of ( n ) points, each with ( x ) and ( y ) coordinates.</li>
 </ul>
 <h5 id="ii-computing-the-initial-convex-hull-ch1"><em>ii. Computing the Initial Convex Hull (CH1)</em><a class="headerlink" href="#ii-computing-the-initial-convex-hull-ch1" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Compute Convex Hull CH1
-vector<P> CH1 = convex_hull(points);
-if((int)CH1.size() == n){
-    // All points are on convex hull, cannot form concave polygon
-    printf("-1\n");
-    return;
-}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Compute Convex Hull CH1</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">points</span><span class="p">);</span>
+<span class="k">if</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">CH1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// All points are on convex hull, cannot form concave polygon</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li><em>Compute Convex Hull (CH1)</em>:</li>
 <li>Uses the previously defined convex_hull function.</li>
@@ -1201,36 +1198,38 @@ if((int)CH1.size() == n){
 <li><em>Action</em>: Print -1 and terminate the current test case.</li>
 </ul>
 <h5 id="iii-identifying-interior-points"><em>iii. Identifying Interior Points</em><a class="headerlink" href="#iii-identifying-interior-points" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Sort CH1 and points to collect interior points using two pointers
-vector<P> sorted_CH1 = CH1;
-sort(sorted_CH1.begin(), sorted_CH1.end());
-sort(points.begin(), points.end());</p>
-<p>vector<P> interior;
-int ptr1 = 0, ptr2 = 0;
-int m = sorted_CH1.size();
-int total = points.size();
-while(ptr1 &lt; m &amp;&amp; ptr2 &lt; n){
-    if(points[ptr2].x &lt; sorted_CH1[ptr1].x || 
-       (points[ptr2].x == sorted_CH1[ptr1].x &amp;&amp; points[ptr2].y &lt; sorted_CH1[ptr1].y)){
-        interior.emplace_back(points[ptr2++]);
-    }
-    else if(points[ptr2].x == sorted_CH1[ptr1].x &amp;&amp; points[ptr2].y == sorted_CH1[ptr1].y){
-        ++ptr1; ++ptr2;
-    }
-    else{
-        ++ptr1;
-    }
-}
-// Add any remaining points
-while(ptr2 &lt; n){
-    interior.emplace_back(points[ptr2++]);
-}</p>
-<p>if(interior.empty()){
-    // No interior points, cannot form concave polygon
-    printf("-1\n");
-    return;
-}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Sort CH1 and points to collect interior points using two pointers</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">;</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">points</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">interior</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">ptr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="k">while</span><span class="p">(</span><span class="n">ptr1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ptr2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
+<span class="w">       </span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">y</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">interior</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="o">++</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="p">].</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sorted_CH1</span><span class="p">[</span><span class="n">ptr1</span><span class="p">].</span><span class="n">y</span><span class="p">){</span>
+<span class="w">        </span><span class="o">++</span><span class="n">ptr1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">ptr2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="o">++</span><span class="n">ptr1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Add any remaining points</span>
+<span class="k">while</span><span class="p">(</span><span class="n">ptr2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">    </span><span class="n">interior</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">ptr2</span><span class="o">++</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">interior</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+<span class="w">    </span><span class="c1">// No interior points, cannot form concave polygon</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Objective: Extract points </em><em>not</em> on the convex hull (CH1). These are the <em>interior points</em> and are crucial for forming a concave polygon.</p>
@@ -1271,9 +1270,9 @@ while(ptr2 &lt; n){
 </li>
 </ul>
 <h5 id="iv-computing-the-convex-hull-of-interior-points-ch2"><em>iv. Computing the Convex Hull of Interior Points (CH2)</em><a class="headerlink" href="#iv-computing-the-convex-hull-of-interior-points-ch2" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Compute Convex Hull of interior points (CH2)
-vector<P> CH2 = convex_hull(interior);</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Compute Convex Hull of interior points (CH2)</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CH2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convex_hull</span><span class="p">(</span><span class="n">interior</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: To construct the convex hull of the </em><em>interior points</em>. This helps in effectively determining how to form a concave polygon by "cutting" into the initial convex hull (CH1).</p>
@@ -1285,9 +1284,9 @@ vector<P> CH2 = convex_hull(interior);</p>
 <li>The relationship between CH1 and CH2 provides insights into how to adjust the polygon to make it concave while maximizing the area.</li>
 </ul>
 <h5 id="v-calculating-the-area-of-the-initial-convex-hull"><em>v. Calculating the Area of the Initial Convex Hull</em><a class="headerlink" href="#v-calculating-the-area-of-the-initial-convex-hull" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Compute twice the area of CH1
-ll CH1_area_twice = polygon_area_twice(CH1);</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Compute twice the area of CH1</span>
+<span class="n">ll</span><span class="w"> </span><span class="n">CH1_area_twice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polygon_area_twice</span><span class="p">(</span><span class="n">CH1</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose</em>: Calculates twice the area of the initial convex hull (CH1) using the polygon_area_twice function.</p>
@@ -1298,9 +1297,9 @@ ll CH1_area_twice = polygon_area_twice(CH1);</p>
 <li>Since the problem requires outputting <em>twice the area</em>, this value serves as a starting point to determine the area reduction needed to make the polygon concave.</li>
 </ul>
 <h5 id="vi-initializing-the-minimum-decrease-in-area"><em>vi. Initializing the Minimum Decrease in Area</em><a class="headerlink" href="#vi-initializing-the-minimum-decrease-in-area" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Initialize minimum decrease in area
-ll min_decrease = LLONG_MAX;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Initialize minimum decrease in area</span>
+<span class="n">ll</span><span class="w"> </span><span class="n">min_decrease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">;</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: Sets a variable min_decrease to the maximum possible value, which will later be updated to store the </em><em>minimum possible decrease</em> in area when transforming the convex hull into a concave polygon.</p>
@@ -1312,44 +1311,44 @@ ll min_decrease = LLONG_MAX;</p>
 <li>This ensures that the resulting concave polygon has the <em>maximum possible area</em>.</li>
 </ul>
 <h5 id="vii-rotating-calipers-technique-to-find-minimal-decrease"><em>vii. Rotating Calipers Technique to Find Minimal Decrease</em><a class="headerlink" href="#vii-rotating-calipers-technique-to-find-minimal-decrease" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Rotating Calipers to find the minimum decrease
-int m1 = CH1.size();
-int m2 = CH2.size();
-if(m2 ==0){
-    // No interior convex hull, cannot form concave polygon
-    printf("-1\n");
-    return;
-}
-int j = 0;
-for(int i =0; i&lt;m1; ++i){
-    P a = CH1[i];
-    P b = CH1[(i+1)%m1];
-    P ab = b - a;</p>
-<pre><code>// Move pointer j to minimize |ab cross (CH2[j] - a)|
-while(true){
-    int jp = (j +1) % m2;
-    P current = CH2[j] - a;
-    P next_p = CH2[jp] - a;
-    ll cross1 = abs(ab.x * current.y - ab.y * current.x);
-    ll cross2 = abs(ab.x * next_p.y - ab.y * next_p.x);
-    if(cross2 &lt; cross1){
-        j = jp;
-    }
-    else{
-        break;
-    }
-}
-// Update minimum decrease
-P x = CH2[j] - a;
-ll cross_val = abs(ab.x * x.y - ab.y * x.x);
-if(cross_val &lt; min_decrease){
-    min_decrease = cross_val;
-    // Early exit if the minimal possible value is found
-    if(min_decrease ==1) break;
-}
-</code></pre>
-<p>}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Rotating Calipers to find the minimum decrease</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">m2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="k">if</span><span class="p">(</span><span class="n">m2</span><span class="w"> </span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// No interior convex hull, cannot form concave polygon</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">m1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">m1</span><span class="p">];</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Move pointer j to minimize |ab cross (CH2[j] - a)|</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">jp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="n">next_p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">jp</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ll</span><span class="w"> </span><span class="n">cross1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ll</span><span class="w"> </span><span class="n">cross2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">next_p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">next_p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cross2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cross1</span><span class="p">){</span>
+<span class="w">            </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jp</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Update minimum decrease</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">cross_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ab</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">cross_val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min_decrease</span><span class="p">){</span>
+<span class="w">        </span><span class="n">min_decrease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cross_val</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Early exit if the minimal possible value is found</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">min_decrease</span><span class="w"> </span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose: Determines the </em><em>minimum decrease</em> in area required to turn the convex hull CH1 into a concave polygon by leveraging the <em>Rotating Calipers</em> technique.</p>
@@ -1411,16 +1410,16 @@ if(cross_val &lt; min_decrease){
 </li>
 </ul>
 <h5 id="viii-final-computation-and-output"><em>viii. Final Computation and Output</em><a class="headerlink" href="#viii-final-computation-and-output" title="Permanent link">&para;</a></h5>
-<p>cpp
-// Now, the maximum area of concave polygon is CH1_area_twice - min_decrease
-ll result = CH1_area_twice - min_decrease;
-// Ensure the result is positive
-if(result &gt;0){
-    printf("%lld\n", result);
-}
-else{
-    printf("-1\n");
-}</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Now, the maximum area of concave polygon is CH1_area_twice - min_decrease</span>
+<span class="n">ll</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CH1_area_twice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">min_decrease</span><span class="p">;</span>
+<span class="c1">// Ensure the result is positive</span>
+<span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li><em>Calculating the Result</em>:</li>
 <li>
@@ -1438,13 +1437,13 @@ else{
 <li>If result is <em>not positive</em>, it's impossible to form a concave polygon with positive area under the given constraints, so -1 is printed.</li>
 </ul>
 <h4 id="g-the-main-function"><em>g. The main Function</em><a class="headerlink" href="#g-the-main-function" title="Permanent link">&para;</a></h4>
-<p>cpp
-int main(){
-    int t;
-    scanf("%d", &amp;t);
-    while(t--) work();
-    return 0;
-}</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="n">work</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>
 <p><em>Purpose</em>: Handles multiple test cases.</p>
@@ -1459,13 +1458,14 @@ int main(){
 <h3 id="4-comprehensive-example-walkthrough"><em>4. Comprehensive Example Walkthrough</em><a class="headerlink" href="#4-comprehensive-example-walkthrough" title="Permanent link">&para;</a></h3>
 <p>To solidify the understanding, let's walk through an illustrative example.</p>
 <h4 id="example-input"><em>Example Input</em><a class="headerlink" href="#example-input" title="Permanent link">&para;</a></h4>
-<p>1
+<div class="highlight"><pre><span></span><code>1
 5
 0 0
 2 0
 1 1
 2 2
-0 2</p>
+0 2
+</code></pre></div>
 <ul>
 <li><em>Interpretation</em>:</li>
 <li><em>1 Test Case</em>:<ul>

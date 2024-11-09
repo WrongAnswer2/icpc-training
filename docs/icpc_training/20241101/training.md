@@ -433,15 +433,11 @@ int main(){
 
 ## Problem B Explanation (ChatGPT):
 
-Certainly! Let's delve into the detailed step-by-step explanation of the provided C++ code. The code is designed to solve the problem of finding the maximum possible area of a *concave polygon* that can be formed from a given set of points, ensuring that the polygon has a strictly positive area. If such a polygon cannot be formed, the code outputs -1.
-
-Here's a structured breakdown of the algorithm and its implementation:
-
 ---
 
 ### *1. Overview of the Problem*
 
-Given \( n \) distinct points in a 2D plane (with no three points collinear), the task is to select a subset of these points (possibly all) and connect them to form a *concave polygon* with a positive area. The goal is to determine the *maximum possible area* of such a polygon. If forming a concave polygon is impossible, the output should be -1.
+Given $ n $ distinct points in a 2D plane (with no three points collinear), the task is to select a subset of these points (possibly all) and connect them to form a *concave polygon* with a positive area. The goal is to determine the *maximum possible area* of such a polygon. If forming a concave polygon is impossible, the output should be -1.
 
 ---
 
@@ -463,19 +459,7 @@ Before diving into the code, it's essential to understand some fundamental conce
 
 ### *3. Detailed Breakdown of the Code*
 
-#### *a. Including Libraries and Defining Basic Structures*
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
-
-- *#include <bits/stdc++.h>*: Includes almost all C++ standard libraries, which is convenient for competitive programming.
-
-- *typedef long long ll;*: Defines ll as an alias for long long to handle large integer values.
-```
-#### *b. Defining the P Structure*
+#### *a. Defining the P Structure*
 
 ```cpp
 // Structure to represent a point
@@ -495,14 +479,14 @@ struct P {
 };
 ```
 
-- *struct P*: Represents a point in 2D space with coordinates \( x \) and \( y \).
+- *struct P*: Represents a point in 2D space with coordinates $ x $ and $ y $.
 
 - *Constructors and Operators*:
-  - *P(ll x_=0, ll y_=0)*: Initializes a point with given \( x \) and \( y \) coordinates. Default values are \( 0 \).
-  - *operator<*: Allows points to be sorted first by \( x \)-coordinate and then by \( y \)-coordinate. This is crucial for algorithms like convex hull construction.
+  - *P(ll x_=0, ll y_=0)*: Initializes a point with given $ x $ and $ y $ coordinates. Default values are $ 0 $.
+  - *operator<*: Allows points to be sorted first by $ x $-coordinate and then by $ y $-coordinate. This is crucial for algorithms like convex hull construction.
   - *operator-*: Defines the subtraction of two points, resulting in a vector. This is used in vector operations like cross products.
 
-#### *c. Cross Product Function*
+#### *b. Cross Product Function*
 
 ```cpp
 // Cross product of OA and OB vectors
@@ -515,21 +499,21 @@ ll cross(const P& O, const P& A, const P& B) {
 }
 ```
 
-- *Purpose: Computes the cross product of vectors **OA* and *OB*, where \( O \), \( A \), and \( B \) are points.
+- *Purpose: Computes the cross product of vectors **OA* and *OB*, where $ O $, $ A $, and $ B $ are points.
 
 - *Formula*:
-  \[
+  $$
   \text{Cross Product} = (A_x - O_x) \times (B_y - O_y) - (A_y - O_y) \times (B_x - O_x)
-  \]
+  $$
 
 - *Interpretation*:
-  - If the result is *positive, the sequence \( O \rightarrow A \rightarrow B \) makes a **left turn* (counter-clockwise).
+  - If the result is *positive, the sequence $ O \rightarrow A \rightarrow B $ makes a **left turn* (counter-clockwise).
   - If it's *negative, it's a **right turn* (clockwise).
   - If the result is *zero, the points are **collinear*.
 
 - *Application*: Used in constructing the convex hull and determining the orientation of three points.
 
-#### *d. Convex Hull Function*
+#### *c. Convex Hull Function*
 
 ```cpp
 // Function to compute the convex hull using Andrew's algorithm
@@ -560,12 +544,12 @@ vector<P> convex_hull(vector<P> pts) {
 }
 ```
 
-- *Purpose: Computes the **convex hull* of a given set of points using *Andrew's Monotone Chain Algorithm*, which is an efficient \( O(n \log n) \) method.
+- *Purpose: Computes the **convex hull* of a given set of points using *Andrew's Monotone Chain Algorithm*, which is an efficient $ O(n \log n) $ method.
 
 - *Steps*:
   
   1. *Sorting*:
-     - The points are first sorted based on their \( x \)-coordinates. If two points have the same \( x \)-coordinate, they're sorted by their \( y \)-coordinates.
+     - The points are first sorted based on their $ x $-coordinates. If two points have the same $ x $-coordinate, they're sorted by their $ y $-coordinates.
   
   2. *Building the Lower Hull*:
      - Iteratively adds points to the hull vector.
@@ -580,7 +564,7 @@ vector<P> convex_hull(vector<P> pts) {
 
 - *Output: A vector of points representing the convex hull in **counter-clockwise* order.
 
-#### *e. Polygon Area Calculation Function*
+#### *d. Polygon Area Calculation Function*
 
 ```cpp
 // Function to compute twice the area of a polygon
@@ -598,18 +582,18 @@ ll polygon_area_twice(const vector<P>& poly){
 - *Purpose: Calculates **twice the area* of a polygon given its vertices using the *Shoelace Formula*.
 
 - *Shoelace Formula*:
-  \[
+  $$
   \text{Area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i \times y_{i+1} - x_{i+1} \times y_i) \right|
-  \]
+  $$
   Since the problem requires *twice the area*, the function directly computes the sum without dividing by 2.
 
 - *Loop Explanation*:
-  - Iterates through each vertex \( i \) and its subsequent vertex \( j = (i+1) \% n \), ensuring a wrap-around for the last vertex back to the first.
-  - Aggregates the cross products \( (x_i \times y_j - x_j \times y_i) \) to compute the signed area.
+  - Iterates through each vertex $ i $ and its subsequent vertex $ j = (i+1) \% n $, ensuring a wrap-around for the last vertex back to the first.
+  - Aggregates the cross products $ (x_i \times y_j - x_j \times y_i) $ to compute the signed area.
   
 - *Output*: The absolute value of the accumulated sum, representing twice the positive area of the polygon.
 
-#### *f. Processing Each Test Case (work Function)*
+#### *e. Processing Each Test Case (work Function)*
 
 ```cpp
 inline void work(){
@@ -730,7 +714,7 @@ for(int i=0;i<n;i++) scanf("%lld %lld", &points[i].x, &points[i].y);
 
 - *Read Input*:
   - *n*: Number of points.
-  - *points*: A vector of \( n \) points, each with \( x \) and \( y \) coordinates.
+  - *points*: A vector of $ n $ points, each with $ x $ and $ y $ coordinates.
 
 ##### *ii. Computing the Initial Convex Hull (CH1)*
 
@@ -802,7 +786,7 @@ if(interior.empty()){
        - *ptr1*: Iterates through sorted_CH1.
        - *ptr2*: Iterates through sorted points.
      - *Comparison Logic*:
-       - *If* the current point in points is *not* on CH1 (i.e., its \( x \)-coordinate is less or, if equal, its \( y \)-coordinate is less than the current CH1 point), it's an *interior point* and is added to the interior vector.
+       - *If* the current point in points is *not* on CH1 (i.e., its $ x $-coordinate is less or, if equal, its $ y $-coordinate is less than the current CH1 point), it's an *interior point* and is added to the interior vector.
        - *If* the current point in points *matches* the current CH1 point (x and y both), it's part of CH1, so both pointers are incremented without adding to interior.
        - *Else*, the CH1 pointer (ptr1) is advanced.
 
@@ -905,12 +889,12 @@ for(int i =0; i<m1; ++i){
      - If CH2 is empty (m2 == 0), it means there are *no interior convex hull points, making it **impossible* to form a concave polygon. The code outputs -1 and terminates.
 
   2. *Iterating Over Each Edge of CH1*:
-     - For each edge \( ab \) in CH1 (from point a to point b):
-       - *P ab = b - a;*: Computes the vector representation of edge \( ab \).
+     - For each edge $ ab $ in CH1 (from point a to point b):
+       - *P ab = b - a;*: Computes the vector representation of edge $ ab $.
   
-  3. *Finding the Point in CH2 Minimizing the Cross Product with Edge \( ab \)*:
-     - The goal is to find a point \( x \) in CH2 such that the absolute value of the cross product \( |ab \times (x - a)| \) is *minimized*.
-     - A smaller cross product implies a smaller area reduction when introducing a concave vertex at \( x \), thereby maximizing the remaining area.
+  3. *Finding the Point in CH2 Minimizing the Cross Product with Edge $ ab $*:
+     - The goal is to find a point $ x $ in CH2 such that the absolute value of the cross product $ |ab \times (x - a)| $ is *minimized*.
+     - A smaller cross product implies a smaller area reduction when introducing a concave vertex at $ x $, thereby maximizing the remaining area.
 
   4. *Rotating Calipers Mechanism*:
      - *While Loop*:
@@ -923,7 +907,7 @@ for(int i =0; i<m1; ++i){
          - Otherwise, stop moving j for the current edge.
 
   5. *Updating the Minimum Decrease*:
-     - After finding the optimal point \( x \) in CH2 for the current edge \( ab \), compute the cross product \( |ab \times (x - a)| \).
+     - After finding the optimal point $ x $ in CH2 for the current edge $ ab $, compute the cross product $ |ab \times (x - a)| $.
      - If this value is *smaller* than the current min_decrease, update min_decrease.
      - *Early Termination*:
        - If min_decrease reaches 1 (the smallest possible positive integer, given that all points are distinct and no three are collinear), break out of the loop early as no smaller value is possible.
@@ -952,28 +936,9 @@ else{
   - If the result is *positive*, it signifies that a valid concave polygon exists, and its twice area is printed.
   - If result is *not positive*, it's impossible to form a concave polygon with positive area under the given constraints, so -1 is printed.
 
-#### *g. The main Function*
-
-```cpp
-int main(){
-    int t;
-    scanf("%d", &t);
-    while(t--) work();
-    return 0;
-}
-```
-
-- *Purpose*: Handles multiple test cases.
-
-- *Steps*:
-  - *Read Number of Test Cases (t)*: Determines how many times to execute the work function.
-  - *Loop Over Test Cases*: For each test case, invoke the work function to process the input and compute the desired output.
-
 ---
 
-### *4. Comprehensive Example Walkthrough*
-
-To solidify the understanding, let's walk through an illustrative example.
+### *4.  Example*
 
 #### *Example Input*
 
@@ -990,73 +955,73 @@ To solidify the understanding, let's walk through an illustrative example.
 - *Interpretation*:
   - *1 Test Case*:
     - *5 Points*:
-      - \( (0, 0) \)
-      - \( (2, 0) \)
-      - \( (1, 1) \)
-      - \( (2, 2) \)
-      - \( (0, 2) \)
+      - $ (0, 0) $
+      - $ (2, 0) $
+      - $ (1, 1) $
+      - $ (2, 2) $
+      - $ (0, 2) $
 
 #### *Step-by-Step Execution*
 
 1. *Compute Convex Hull (CH1)*:
-   - For the given points, the convex hull would include all points except \( (1, 1) \), as it's an interior point.
-   - *CH1*: \( [(0, 0), (2, 0), (2, 2), (0, 2)] \)
+   - For the given points, the convex hull would include all points except $ (1, 1) $, as it's an interior point.
+   - *CH1*: $ [(0, 0), (2, 0), (2, 2), (0, 2)] $
 
 2. *Check Convexity*:
    - *CH1.size() = 4, *n = 5**: Not all points are on the convex hull. Proceed.
 
 3. *Identify Interior Points*:
-   - *Interior Points*: \( [(1, 1)] \)
+   - *Interior Points*: $ [(1, 1)] $
 
 4. *Compute Convex Hull of Interior Points (CH2)*:
    - Since there's only one interior point, the convex hull is the point itself.
-   - *CH2*: \( [(1, 1)] \)
+   - *CH2*: $ [(1, 1)] $
 
 5. *Calculate Twice the Area of CH1*:
    - *Formula*:
-     \[
+     $$
      \text{Area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i \times y_{i+1} - x_{i+1} \times y_i) \right|
-     \]
+     $$
    - *Calculation*:
-     - \( (0 \times 0 - 2 \times 0) = 0 \)
-     - \( (2 \times 2 - 2 \times 0) = 4 \)
-     - \( (2 \times 2 - 0 \times 2) = 4 \)
-     - \( (0 \times 0 - 0 \times 2) = 0 \)
-     - *Sum*: \( 0 + 4 + 4 + 0 = 8 \)
-     - *Twice the Area*: \( |8| = 8 \)
+     - $ (0 \times 0 - 2 \times 0) = 0 $
+     - $ (2 \times 2 - 2 \times 0) = 4 $
+     - $ (2 \times 2 - 0 \times 2) = 4 $
+     - $ (0 \times 0 - 0 \times 2) = 0 $
+     - *Sum*: $ 0 + 4 + 4 + 0 = 8 $
+     - *Twice the Area*: $ |8| = 8 $
 
 6. *Initialize min_decrease*:
-   - *min_decrease*: Initially set to \( LLONG\_MAX \)
+   - *min_decrease*: Initially set to $ LLONG\_MAX $
 
 7. *Applying Rotating Calipers*:
 
    - *Iterate Over Each Edge of CH1*:
 
-     *First Edge*: \( (0, 0) \rightarrow (2, 0) \)
-     - *Vector \( ab \)*: \( (2-0, 0-0) = (2, 0) \)
-     - *Special Point from CH2*: \( (1,1) - (0,0) = (1,1) \)
-     - *Cross Product*: \( |2 \times 1 - 0 \times 1| = |2| = 2 \)
-     - *Update min_decrease*: \( \min(\text{LLONG\_MAX}, 2) = 2 \)
+     *First Edge*: $ (0, 0) \rightarrow (2, 0) $
+     - *Vector $ ab $*: $ (2-0, 0-0) = (2, 0) $
+     - *Special Point from CH2*: $ (1,1) - (0,0) = (1,1) $
+     - *Cross Product*: $ |2 \times 1 - 0 \times 1| = |2| = 2 $
+     - *Update min_decrease*: $ \min(\text{LLONG\_MAX}, 2) = 2 $
 
-     *Second Edge*: \( (2, 0) \rightarrow (2, 2) \)
-     - *Vector \( ab \)*: \( (2-2, 2-0) = (0, 2) \)
-     - *Special Point from CH2*: \( (1,1) - (2,0) = (-1,1) \)
-     - *Cross Product*: \( |0 \times 1 - 2 \times (-1)| = |2| = 2 \)
-     - *Update min_decrease*: \( \min(2, 2) = 2 \)
+     *Second Edge*: $ (2, 0) \rightarrow (2, 2) $
+     - *Vector $ ab $*: $ (2-2, 2-0) = (0, 2) $
+     - *Special Point from CH2*: $ (1,1) - (2,0) = (-1,1) $
+     - *Cross Product*: $ |0 \times 1 - 2 \times (-1)| = |2| = 2 $
+     - *Update min_decrease*: $ \min(2, 2) = 2 $
 
-     *Third Edge*: \( (2, 2) \rightarrow (0, 2) \)
-     - *Vector \( ab \)*: \( (0-2, 2-2) = (-2, 0) \)
-     - *Special Point from CH2*: \( (1,1) - (2,2) = (-1,-1) \)
-     - *Cross Product*: \( |-2 \times (-1) - 0 \times (-1)| = |2| = 2 \)
-     - *Update min_decrease*: \( \min(2, 2) = 2 \)
+     *Third Edge*: $ (2, 2) \rightarrow (0, 2) $
+     - *Vector $ ab $*: $ (0-2, 2-2) = (-2, 0) $
+     - *Special Point from CH2*: $ (1,1) - (2,2) = (-1,-1) $
+     - *Cross Product*: $ |-2 \times (-1) - 0 \times (-1)| = |2| = 2 $
+     - *Update min_decrease*: $ \min(2, 2) = 2 $
 
-     *Fourth Edge*: \( (0, 2) \rightarrow (0, 0) \)
-     - *Vector \( ab \)*: \( (0-0, 0-2) = (0, -2) \)
-     - *Special Point from CH2*: \( (1,1) - (0,2) = (1,-1) \)
-     - *Cross Product*: \( |0 \times (-1) - (-2) \times 1| = |2| = 2 \)
-     - *Update min_decrease*: \( \min(2, 2) = 2 \)
+     *Fourth Edge*: $ (0, 2) \rightarrow (0, 0) $
+     - *Vector $ ab $*: $ (0-0, 0-2) = (0, -2) $
+     - *Special Point from CH2*: $ (1,1) - (0,2) = (1,-1) $
+     - *Cross Product*: $ |0 \times (-1) - (-2) \times 1| = |2| = 2 $
+     - *Update min_decrease*: $ \min(2, 2) = 2 $
 
-   - *Final min_decrease*: \( 2 \)
+   - *Final min_decrease*: $ 2 $
 
 8. *Compute the Result*:
 
@@ -1065,7 +1030,7 @@ To solidify the understanding, let's walk through an illustrative example.
      \text{Result} = \text{CH1\_area\_twice} - \text{min\_decrease} = 8 - 2 = 6
      \]
    - *Check*:
-     - Since \( 6 > 0 \), a valid concave polygon exists.
+     - Since $ 6 > 0 $, a valid concave polygon exists.
    - *Output*: 6
 
 #### *Final Output for the Example*
@@ -1115,10 +1080,10 @@ To solidify the understanding, let's walk through an illustrative example.
 To ensure that the code runs efficiently within the given constraints (especially with large inputs), several optimizations are employed:
 
 1. *Efficient Convex Hull Construction*:
-   - *Andrew's Monotone Chain Algorithm* is used, which runs in \( O(n \log n) \) time and is suitable for large datasets.
+   - *Andrew's Monotone Chain Algorithm* is used, which runs in $ O(n \log n) $ time and is suitable for large datasets.
 
 2. *Two-Pointer Technique for Identifying Interior Points*:
-   - By sorting both CH1 and points, the two-pointer approach reduces the time complexity of identifying interior points from \( O(n \log n) \) (using binary search) to \( O(n) \), which is crucial when \( n \) is large.
+   - By sorting both CH1 and points, the two-pointer approach reduces the time complexity of identifying interior points from $ O(n \log n) $ (using binary search) to $ O(n) $, which is crucial when $ n $ is large.
 
 3. *Rotating Calipers for Minimal Decrease Calculation*:
    - Instead of naively iterating over all possible point-edge pairs (which would be computationally expensive), the Rotating Calipers technique efficiently traverses points and edges to find the optimal minimal decrease in area.
@@ -1133,22 +1098,3 @@ To ensure that the code runs efficiently within the given constraints (especiall
    - By pre-sorting and efficiently managing pointers, the code avoids recalculating or re-evaluating points and edges, ensuring optimal runtime performance.
 
 ---
-
-### *7. Final Notes and Best Practices*
-
-- *Data Types*: The use of long long (ll) ensures that very large coordinate values and cross products do not cause integer overflow.
-
-- *Edge Case Handling*: The algorithm meticulously handles scenarios where:
-  - All points lie on the convex hull.
-  - There are no interior points.
-  - Reducing the area might lead to invalid (zero or negative) results.
-
-- *Modular Code Design*: Functions like convex_hull and polygon_area_twice encapsulate specific functionalities, promoting code readability and reusability.
-
-- *Algorithm Choice*: Selecting the right algorithms (like Andrew's for convex hull and Rotating Calipers for minimal decrease) is pivotal for achieving the desired time complexity.
-
-- *Performance Considerations*: Given the problem's constraints (up to \( 10^5 \) points per test case and \( 2 \times 10^5 \) across all test cases), ensuring \( O(n \log n) \) or better time complexities is essential to prevent Time Limit Exceeded (TLE) errors.
-
----
-
-By following this detailed explanation, you should now have a comprehensive understanding of the algorithm and logic underpinning the provided C++ code. This understanding not only aids in grasping how the problem is solved but also equips you with insights into efficient computational geometry techniques essential for similar problems.
