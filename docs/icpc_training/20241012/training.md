@@ -42,8 +42,6 @@ int main(){
 }
 ```
 
-## Problem C. Permutation Counting 4 (Temporarily Skipped)
-
 ## Problem M. Find the Easiest Problem
 
 ```cpp
@@ -75,4 +73,11 @@ int main(){
 }
 ```
 
+## Problem C. Permutation Counting 4
+Todo:Understand https://qoj.ac/submission/567854 
 
+## F. Make Max 
+Todo: Understand https://qoj.ac/submission/565950
+
+## G. The Median of the Median of the Median
+Todo: Understand https://qoj.ac/submission/565952
