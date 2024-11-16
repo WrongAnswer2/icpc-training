@@ -114,3 +114,43 @@ so that it has an odd length of at least 27.
 We can fill in those even sequences using observation 1, and fill even number of elements at the back.
 
 Therefore, there exist solution for any odd n of n>=27.
+
+```cpp
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#include <bits/stdc++.h>
+#define ll long long
+#define INF 0x3f3f3f3f
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin>>t;
+    while(t--) {
+        int n;
+        cin>>n;
+        if(n%2==0) {
+            int x = 1;
+            for(int i=0; i<n; i+=2) {
+                cout<<x<<" "<<x<<" ";
+                x++;
+            }
+            cout<<endl;
+        } else if(n>=27) {
+            cout<<"1 3 3 4 4 5 5 6 6 1 7 7 8 8 9 9 10 10 11 11 12 12 2 13 13 1 2 ";
+            int x = 14;
+            for(int i=28; i<=n; i+=2) {
+                cout<<x<<" "<<x<<" ";
+                x++;
+            }
+            cout<<endl;
+        } else {
+            cout<<-1<<endl;
+        }
+    }
+    return 0;
+}
+```
