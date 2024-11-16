@@ -15,6 +15,7 @@ nav:
 - CodeForce-Training:
   - 02/11/2024: codeforce_training/20241102/training.md
   - 01/11/2024: codeforce_training/20241101/training.md
+  - 16/11/2024: codeforce_training/20241116/training.md
 markdown_extensions:
 - toc:
     permalink: true
